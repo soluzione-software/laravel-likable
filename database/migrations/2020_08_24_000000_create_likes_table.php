@@ -18,6 +18,7 @@ class CreateLikesTable extends Migration
     {
         $liker = static::resolveLikerContract();
         Schema::create(static::resolveLikeContract()->getTable(), function (Blueprint $table) use ($liker) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger($liker->getForeignKey());
             $table->morphs('likable');
             $table->boolean('liked');
