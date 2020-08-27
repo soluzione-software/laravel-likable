@@ -1,0 +1,29 @@
+{
+    "name": "soluzione-software/laravel-likable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yuriy Martini",
+            "email": "y.martini@soluzionesoftware.com",
+            "homepage": "https://github.com/yuriy-martini",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/database": "^5.8",
+        "illuminate/support": "^5.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "SoluzioneSoftware\\Laravel\\Likable\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SoluzioneSoftware\\Laravel\\Likable\\ServiceProvider"
+            ]
+        }
+    }
+}
