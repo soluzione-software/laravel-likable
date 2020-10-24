@@ -3,6 +3,7 @@
 namespace SoluzioneSoftware\Laravel\Likable\Models;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -17,6 +18,8 @@ use SoluzioneSoftware\Laravel\Likable\Traits\ResolvesContracts;
  * @property bool liked
  * @property Likable|Model likable
  * @property Liker liker
+ * @method static Builder|$this whereLiked(bool $liked = true)
+ * @method static Builder|$this whereDisliked(bool $disliked = true)
  */
 class Like extends Model implements LikeContract
 {
@@ -82,5 +85,15 @@ class Like extends Model implements LikeContract
     public function setLiked(bool $value)
     {
         $this->setAttribute('liked', $value);
+    }
+
+    public static function scopeWhereLiked(Builder $query, bool $liked = true)
+    {
+        return $query->where('liked', $liked);
+    }
+
+    public static function scopeWhereDisliked(Builder $query, bool $disliked = true)
+    {
+        return $query->where('liked', !$disliked);
     }
 }
