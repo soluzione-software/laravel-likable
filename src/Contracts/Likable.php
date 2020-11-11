@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 interface Likable extends Model
 {
-    public function likes(): MorphMany;
+    /**
+     * @return MorphMany|Like
+     */
+    public function likes();
 }
